@@ -129,6 +129,7 @@ static NSMutableArray <id<BugsnagPlugin>> *registeredPlugins;
         [self.notifier notifyError:error
                              block:^(BugsnagCrashReport *_Nonnull report) {
                                  report.depth += 2;
+                                 [report addMetadata:error.userInfo toTabWithName:@"Error User Info"];
                              }];
     }
 }
